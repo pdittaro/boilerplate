@@ -51,14 +51,6 @@ function extract()      # Handy Extract Program
     fi
 }
 
-
-# Creates an archive (*.tar.gz) from given directory.
-function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
-
-# Create a ZIP archive of a file or folder.
-function makezip() { zip -r "${1%%/}.zip" "$1" ; }
-
-
 function ii()   # Get current host related info.
 {
     echo -e "\nYou are logged on ${BRed}$HOST"
@@ -122,6 +114,8 @@ if [ -x /usr/bin/fortune ]; then
 	/usr/bin/fortune
 fi
 
+
+
 #-------------------------------------------------------------
 # PS1
 #-------------------------------------------------------------
@@ -148,13 +142,15 @@ case ${TERM} in
 	# Time
 	PS1="\[${Purple}\]\T\[${NC}\]"
         # User@Host (with connection type info):
-        PS1=${PS1}"[\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\]:\W]"
+        PS1=${PS1}"[\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\]:\[${Yellow}\]\w\[${NC}\]"
+
 	# Console prompt
 	if [[ ${USER} == "root" ]]; then
-		PS1=${PS1}"\[${SU}\]#\[${NC}\] "
+		PS1=${PS1}"]\[${SU}\]#\[${NC}\] "
 	else
-		PS1=${PS1}"\[${SU}\]$\[${NC}\] "
+		PS1=${PS1}"]\[${SU}\]$\[${NC}\] "
 	fi
+
         # Set title of current xterm:
         PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"
         ;;
