@@ -100,7 +100,7 @@ unset PS1
 case ${TERM} in
   *term | rxvt | linux | xterm-256color | screen-256color)
         # User@Host (with connection type info):
-        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h \[${NC}\]\W\[${Blue}\])\[${NC}\]"
+        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\] \W\[${Blue}\])\[${NC}\]"
 
 	# Console prompt
 	if [[ ${USER} == "root" ]]; then
