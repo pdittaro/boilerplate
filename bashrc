@@ -28,9 +28,11 @@ fi
 #-------------------------------------------------------------
 
 alias la='ls -la'
- function title {
+
+function title {
    echo -en "\033]2;$@\007"
 }
+
 #-------------------------------------------------------------
 # Colors
 #-------------------------------------------------------------
@@ -74,7 +76,7 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 # OnStart()
 #-------------------------------------------------------------
 
-
+source ~/bin/git-prompt.sh
 
 #-------------------------------------------------------------
 # PS1
@@ -100,13 +102,16 @@ unset PS1
 case ${TERM} in
   *term | rxvt | linux | xterm-256color | screen-256color)
         # User@Host (with connection type info):
-        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\] \W\[${Blue}\])\[${NC}\]"
-
+        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h \[${NC}\]\W\[${Blue}\])\[${NC}\]"
+        # Git status
+	if [[ __git_ps1 ]]; then
+		PS1=${PS1}"\[${White}\]\$(__git_ps1) \[${NC}\]"
+	fi
 	# Console prompt
 	if [[ ${USER} == "root" ]]; then
-		PS1=${PS1}" \[${SU}\]#\[${NC}\] "
+		PS1=${PS1}"\[${SU}\]#\[${NC}\] "
 	else
-		PS1=${PS1}" \[${SU}\]$\[${NC}\] "
+		PS1=${PS1}"\[${SU}\]$\[${NC}\] "
 	fi
 
         ;;
