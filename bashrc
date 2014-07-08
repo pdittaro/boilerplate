@@ -29,9 +29,16 @@ fi
 
 alias la='ls -la'
 
+alias cdtc='cd $TOMCAT_HOME'
+alias th='cd ~/.local/opt/apache-tomcat-6.0.37'
+alias cdwl='cd $MW_HOME'
+
+alias xml='xmlstarlet'
+
 function title {
    echo -en "\033]2;$@\007"
 }
+
 
 #-------------------------------------------------------------
 # Colors
@@ -42,9 +49,9 @@ Black='\e[0;30m'        # Black
 Red='\e[0;31m'          # Red
 Green='\e[0;32m'        # Green
 Yellow='\e[0;33m'       # Yellow
-Blue='\e[0;34m'         # Blue
+Blue='\e[0;36m'         # Blue
 Purple='\e[0;35m'       # Purple
-Cyan='\e[0;36m'         # Cyan
+Cyan='\e[1;36m'         # Cyan
 White='\e[0;37m'        # White
 
 # Bold
@@ -73,12 +80,6 @@ ALERT=${BWhite}${On_Red} # Bold White on red background
 
 
 #-------------------------------------------------------------
-# OnStart()
-#-------------------------------------------------------------
-
-source ~/bin/git-prompt.sh
-
-#-------------------------------------------------------------
 # PS1
 #-------------------------------------------------------------
 
@@ -102,7 +103,7 @@ unset PS1
 case ${TERM} in
   *term | rxvt | linux | xterm-256color | screen-256color)
         # User@Host (with connection type info):
-        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h\[${NC}\] \W\[${Blue}\])\[${NC}\]"
+        PS1="\[${Blue}\](\[${SU}\]\u\[${NC}\]@\[${CNX}\]\h \[${NC}\]\W\[${Blue}\])\[${NC}\]"
         # Git status
 	if [[ __git_ps1 ]]; then
 		PS1=${PS1}"\[${White}\]\$(__git_ps1) \[${NC}\]"
@@ -120,4 +121,5 @@ case ${TERM} in
                                # --> Shows full pathname of current dir.
         ;;
 esac
+
 
