@@ -29,16 +29,6 @@ fi
 
 alias la='ls -la'
 
-alias cdtc='cd $TOMCAT_HOME'
-alias th='cd ~/.local/opt/apache-tomcat-6.0.37'
-alias cdwl='cd $MW_HOME'
-
-alias xml='xmlstarlet'
-
-function title {
-   echo -en "\033]2;$@\007"
-}
-
 
 #-------------------------------------------------------------
 # Colors
