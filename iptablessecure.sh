@@ -9,11 +9,12 @@ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 # 3. Incoming http traffic
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+iptables -A INPUT -p tcp --dport 8000 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 28017 -j ACCEPT
  
 # 4. Allow email (SMTP and IMAP)
 iptables -A INPUT -p tcp --dport 25 -j ACCEPT
-#iptables -A INPUT -p tcp --dport 110 -j ACCEPT
+iptables -A INPUT -p tcp --dport 110 -j ACCEPT
 iptables -A INPUT -p tcp --dport 143 -j ACCEPT
 iptables -A INPUT -p tcp --dport 993 -j ACCEPT
 #iptables -A INPUT -p tcp --dport 995 -j ACCEPT
